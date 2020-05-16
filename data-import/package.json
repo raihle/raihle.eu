@@ -20,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/raihle/raihle.eu/issues"
   },
-  "homepage": "https://github.com/raihle/raihle.eu#readme"
+  "homepage": "https://github.com/raihle/raihle.eu#readme",
+  "devDependencies": {
+    "@types/node": "^14.0.1",
+    "better-sqlite3": "^7.0.1",
+    "gedstream": "^0.1.0",
+    "typescript": "^3.9.2",
+    "yargs": "^15.3.1"
+  }
 }
