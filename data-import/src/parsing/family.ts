@@ -1,4 +1,4 @@
-import { one, event, GedcomTag, allData } from "./disgen-parsing";
+import { one, event, GedcomTag, allData } from "./parsing-functions";
 
 export interface GedcomFamily extends GedcomTag {
   tag: "FAM";

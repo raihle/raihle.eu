@@ -1,10 +1,10 @@
 import yargs = require("yargs");
-import importData from "./data-import";
+import { importToDatabase } from "./main";
 
-const argv = yargs.argv;
+const argv: { from: string; to: string } = yargs.argv as any;
 
 if (argv.from && argv.to) {
-  importData(argv.from, argv.to)
+  importToDatabase(argv.from, argv.to)
     .then(() => console.log("DONE"))
     .catch((e) => console.error("FAILED:", e));
 }

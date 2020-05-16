@@ -1,13 +1,13 @@
 import Gedstream = require("gedstream");
-import Database from "./database";
+import Database from "./database/database";
 import { createReadStream } from "fs";
-import { Individual, GedcomIndividual } from "./individual";
-import { GedcomTag } from "./disgen-parsing";
-import { Family, GedcomFamily } from "./family";
+import { Individual, GedcomIndividual } from "./parsing/individual";
+import { GedcomTag } from "./parsing/parsing-functions";
+import { Family, GedcomFamily } from "./parsing/family";
 
 type KnownGedcomTag = GedcomIndividual | GedcomFamily;
 
-export default function main(from: string, to: string) {
+export function importToDatabase(from: string, to: string) {
   return new Promise((resolve, reject) => {
     try {
       const parser = new Gedstream();

@@ -1,5 +1,5 @@
-import { one, event, multiline, GedcomTag, allData } from "./disgen-parsing";
-const DISGEN_NAME_REGEX = /^(?:(?<generation>[^:]+):)?(?<id>\d{2,}(?:\.\d{2,})*)?\/(?<name>[^\/]+)\/$/;
+import { one, event, multiline, GedcomTag, allData } from "./parsing-functions";
+const DISGEN_NAME_REGEX = /^(?:(?<generation>[^:]*):(?<id>[^\/]*))?\/(?<name>[^\/]*)\/$/;
 
 export interface GedcomIndividual extends GedcomTag {
   tag: "INDI";
@@ -54,11 +54,12 @@ export class Individual {
 
   private parsedName() {
     if (!this.cachedName) {
-      const nameMatches = one(this.data, "NAME").data.match(DISGEN_NAME_REGEX);
+      const baseName = one(this.data, "NAME").data;
+      const nameMatches = baseName.match(DISGEN_NAME_REGEX)?.groups || {};
       this.cachedName = {
-        name: nameMatches?.groups?.name,
-        id: nameMatches?.groups?.id,
-        generation: nameMatches?.groups?.generation,
+        name: nameMatches.name || baseName,
+        id: nameMatches.id,
+        generation: nameMatches.generation,
       };
     }
     return this.cachedName;
