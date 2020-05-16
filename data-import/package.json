@@ -4,6 +4,8 @@
   "description": "Import family data from disgen files to SQLite",
   "main": "index.js",
   "scripts": {
+    "go": "tsc && node dist/index.js --from ../data/brandt.ged --to target",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,7 +13,7 @@
     "url": "git+ssh://git@github.com/raihle/raihle.eu.git"
   },
   "keywords": [
-    "geneaology",
+    "genealogy",
     "disgen",
     "sqlite"
   ],
